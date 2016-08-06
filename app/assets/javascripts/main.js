@@ -23,10 +23,14 @@ create: function() {
     this.bird.body.gravity.y = 0;
     this.pipes = game.add.group();
     this.timer = game.time.events.loop(1500, this.addRowOfPipes, this);
-    // Call the 'jump' function when the spacekey is hit
     var spaceKey = game.input.keyboard.addKey(
                     Phaser.Keyboard.SPACEBAR);
-    spaceKey.onDown.add(this.jump, this);
+
+    // Call the 'up_motion' function when the spacekey is hit
+    spaceKey.onDown.add(this.up_motion, this);
+
+    // Call the 'stop_motion' function when the spacekey is released
+    spaceKey.onUp.add(this.stop_motion, this);      // NICK ADDED THIS
 },
 
 addOnePipe: function(x,y) {
@@ -57,9 +61,14 @@ update: function() {
         this.restartGame();
 },
 
-jump: function() {
+up_motion: function() {
     // Add a vertical velocity to the bird
     this.bird.body.velocity.y = -350;
+},
+
+stop_motion: function() {
+    // Add a vertical velocity to the bird
+    this.bird.body.velocity.y = 0;
 },
 
 // Restart the game
