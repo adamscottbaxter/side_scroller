@@ -1,4 +1,4 @@
-// $( document ).ready(function() {
+$( document ).ready(function() {
 
 var mainState = {
 
@@ -171,10 +171,9 @@ var mainState = {
 
 };
 
-var game = new Phaser.Game(800, 490);
-
+var game = new Phaser.Game(800, 490, Phaser.CANVAS, 'game');
 game.state.add('main', mainState);
 
 game.state.start('main');
 
-// });
+});
