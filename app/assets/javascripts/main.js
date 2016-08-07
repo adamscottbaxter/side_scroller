@@ -1,3 +1,5 @@
+// $( document ).ready(function() {
+
 var mainState = {
 
       preload: function() {
@@ -174,3 +176,5 @@ var game = new Phaser.Game(800, 490);
 game.state.add('main', mainState);
 
 game.state.start('main');
+
+// });
