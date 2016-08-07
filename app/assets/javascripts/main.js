@@ -37,7 +37,9 @@ var mainState = {
         pipes.enableBody = true;
         pipes.immovable = true;
         this.timer = game.time.events.loop(250, this.borderPipes, this);
-        this.timer = game.time.events.loop(2000, this.placeObsticle, this);
+        this.timer = game.time.events.loop(2700, this.placeObsticle, this);
+        this.timer = game.time.events.loop(2000, this.placeObsticle2, this);
+        this.timer = game.time.events.loop(3700, this.placeObsticle3, this);
         var wKey = game.input.keyboard.addKey(
                         Phaser.Keyboard.W);
         var sKey = game.input.keyboard.addKey(
@@ -97,12 +99,20 @@ var mainState = {
     },
 
     placeObsticle: function() {
-        this.addObsticle(400, 300)
+        this.addObsticle(800, 300)
+    },
+
+    placeObsticle2: function() {
+        this.addObsticle(800, 200)
+    },
+
+    placeObsticle3: function() {
+        this.addObsticle(800, 100)
     },
 
     borderPipes: function() {
-        this.addOnePipe(400, 0);
-        this.addOnePipe(400, 440);
+        this.addOnePipe(800, 0);
+        this.addOnePipe(800, 440);
     },
 
 
