@@ -1,7 +1,7 @@
 # Be sure to restart your server when you modify this file. Action Cable runs in a loop that does not support auto reloading.
-class RoomChannel < ApplicationCable::Channel
+class GameChannel < ApplicationCable::Channel
   def subscribed
-    stream_from "room_channel"
+    stream_from "game_channel"
   end
 
   def unsubscribed
@@ -9,7 +9,7 @@ class RoomChannel < ApplicationCable::Channel
   end
 
   def speak(data)
-    # ActionCable.server.broadcast 'room_channel', message: data['message']
+    # ActionCable.server.broadcast 'game_channel', message: data['message']
     Message.create!(content: data['message'])
   end
 end
