@@ -38,7 +38,7 @@ var mainState = {
         pipes.immovable = true;
         this.timer = game.time.events.loop(250, this.borderPipes, this);
         this.timer = game.time.events.loop(2700, this.placeObsticle, this);
-        this.timer = game.time.events.loop(2000, this.placeObsticle2, this);
+        this.timer = game.time.events.loop(7700, this.placeObsticle2, this);
         this.timer = game.time.events.loop(3700, this.placeObsticle3, this);
         var wKey = game.input.keyboard.addKey(
                         Phaser.Keyboard.W);
@@ -98,12 +98,22 @@ var mainState = {
           obsticle.body.immovable = true;
     },
 
+    addReverseObsticle: function(x,y) {
+          var obsticle = game.add.sprite(x,y, 'pipe');
+          obsticles.add(obsticle);
+          game.physics.arcade.enable(obsticle);
+          obsticle.body.velocity.x = 100;
+          obsticle.checkWorldBounds = true;
+          obsticle.outOfBoundsKill = true;
+          obsticle.body.immovable = true;
+    },
+
     placeObsticle: function() {
         this.addObsticle(800, 300)
     },
 
     placeObsticle2: function() {
-        this.addObsticle(800, 200)
+        this.addReverseObsticle(0, 200)
     },
 
     placeObsticle3: function() {
