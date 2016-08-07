@@ -21,8 +21,11 @@ create: function() {
 
     // Add gravity to the bird to make it fall
     this.bird.body.gravity.y = 0;
+    // this.bird.body.checkCollision.up = true;   COLLISION NOT WORKING YET
+    // this.bird.body.checkCollision.down = true;
+    // this.bird.body.setSize(220, 220, 0, 0);
     this.pipes = game.add.group();
-    this.timer = game.time.events.loop(1500, this.addRowOfPipes, this);
+    this.timer = game.time.events.loop(250, this.borderPipes, this);
     var spaceKey = game.input.keyboard.addKey(
                     Phaser.Keyboard.SPACEBAR);
 
@@ -40,6 +43,13 @@ addOnePipe: function(x,y) {
       pipe.body.velocity.x = -200;
       pipe.checkWorldBounds = true;
       pipe.outOfBoundsKill = true;
+      // pipe.body.checkCollision.up = true;
+      // pipe.body.checkCollision.down = true;
+},
+
+borderPipes: function() {
+    this.addOnePipe(400, 0);
+    this.addOnePipe(400, 440);
 },
 
 addRowOfPipes: function() {
