@@ -1,7 +1,7 @@
 class GamesController < ApplicationController
 
-  def new
-
+  def show
+    @messages = Message.all
   end
 
 end
