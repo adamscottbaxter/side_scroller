@@ -40,6 +40,10 @@ var mainState = {
         this.timer = game.time.events.loop(2700, this.placeObsticle, this);
         this.timer = game.time.events.loop(7700, this.placeObsticle2, this);
         this.timer = game.time.events.loop(3700, this.placeObsticle3, this);
+
+        var enterKey = game.input.keyboard.addKey(
+                        Phaser.Keyboard.ENTER);
+
         var wKey = game.input.keyboard.addKey(
                         Phaser.Keyboard.W);
         var sKey = game.input.keyboard.addKey(
@@ -57,6 +61,9 @@ var mainState = {
         var rightKey = game.input.keyboard.addKey(
                         Phaser.Keyboard.RIGHT);
         // Call the 'up_motion1' function when the spacekey is hit
+
+        enterKey.onDown.add(this.player_move, this);
+
         wKey.onDown.add(this.up_motion1, this);
         sKey.onDown.add(this.down_motion1, this);
         aKey.onDown.add(this.left_motion1, this);
@@ -67,14 +74,14 @@ var mainState = {
         rightKey.onDown.add(this.right_motion2, this);
 
         // Call the 'stop_motion' function when the spacekey is released
-        wKey.onUp.add(this.stop_vertical_motion1, this);      // NICK ADDED THIS
-        sKey.onUp.add(this.stop_vertical_motion1, this);      // NICK ADDED THIS
-        aKey.onUp.add(this.stop_horizontal_motion1, this);      // NICK ADDED THIS
-        dKey.onUp.add(this.stop_horizontal_motion1, this);      // NICK ADDED THIS
-        upKey.onUp.add(this.stop_vertical_motion2, this);      // NICK ADDED THIS
-        downKey.onUp.add(this.stop_vertical_motion2, this);      // NICK ADDED THIS
-        leftKey.onUp.add(this.stop_horizontal_motion2, this);      // NICK ADDED THIS
-        rightKey.onUp.add(this.stop_horizontal_motion2, this);      // NICK ADDED THIS
+        wKey.onUp.add(this.stop_vertical_motion1, this);
+        sKey.onUp.add(this.stop_vertical_motion1, this);
+        aKey.onUp.add(this.stop_horizontal_motion1, this);
+        dKey.onUp.add(this.stop_horizontal_motion1, this);
+        upKey.onUp.add(this.stop_vertical_motion2, this);
+        downKey.onUp.add(this.stop_vertical_motion2, this);
+        leftKey.onUp.add(this.stop_horizontal_motion2, this);
+        rightKey.onUp.add(this.stop_horizontal_motion2, this);
     },
 
     addOnePipe: function(x,y) {
@@ -135,6 +142,12 @@ var mainState = {
         game.physics.arcade.overlap(player1, obsticles, this.restartGame, null, this);
         game.physics.arcade.overlap(player2, obsticles, this.restartGame, null, this);
 
+    },
+
+    player_move: function() {
+        App.game.speak(event.target.value)
+        event.target.value = ''
+        event.preventDefault()
     },
 
     up_motion1: function() {
