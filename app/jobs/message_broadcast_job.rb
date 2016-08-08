@@ -3,7 +3,14 @@ class MessageBroadcastJob < ApplicationJob
 
   def perform(message)
     # ActionCable.server.broadcast 'game_channel', message: render_message(message)
-    ActionCable.server.broadcast 'game_channel', message: "-50"
+    puts '!!!!!!!!!!!!!!!!!!!'
+    puts message.content.class
+    if message.content.to_i > 0
+      speed = -55
+    else
+      speed = 55
+    end
+    ActionCable.server.broadcast 'game_channel', message: speed
   end
 
   private

@@ -12,6 +12,6 @@ App.game = App.cable.subscriptions.create "GameChannel",
 
   speak: (message) ->
 
-    @perform 'speak', message: message
+    @perform 'speak', message: player1.body.velocity.y
 
 

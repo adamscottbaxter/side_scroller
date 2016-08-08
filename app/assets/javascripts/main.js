@@ -42,7 +42,7 @@ var mainState = {
         this.timer = game.time.events.loop(3700, this.placeObsticle3, this);
 
         var enterKey = game.input.keyboard.addKey(
-                        Phaser.Keyboard.ENTER);
+                        Phaser.Keyboard.P);
 
         var wKey = game.input.keyboard.addKey(
                         Phaser.Keyboard.W);
