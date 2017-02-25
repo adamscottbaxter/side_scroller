@@ -1,24 +1,5 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+This is an experiment with two-player gameplay using Rails 5's ActionCable.  A deployed version can be found at http://enigmatic-anchorage-46822.herokuapp.com/.
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Written by Adam Baxter and Nick Gorajski
